@@ -17,9 +17,9 @@
                     <span slot="title">功能页</span>
                 </template>
                 <el-menu-item-group>
-                    <el-menu-item index="/home/about/aboutOne">功能页1</el-menu-item>
-                    <el-menu-item index="/home/about/aboutTwo">功能页2</el-menu-item>
-                    <el-menu-item index="/home/about/aboutThree">功能页3</el-menu-item>
+                    <el-menu-item index="/home/aboutOne">功能页1</el-menu-item>
+                    <el-menu-item index="/home/aboutTwo">功能页2</el-menu-item>
+                    <el-menu-item index="/home/aboutThree">功能页3</el-menu-item>
                 </el-menu-item-group>
             </el-submenu>
             <el-menu-item index="/home/account">

@@ -1,26 +1,26 @@
 <template>
   <div id="app">
+    <el-container>
+      <el-aside :width="asideWidth">
+        <m-menu :onasideWidth="setAsideWidth" />
+      </el-aside>
       <el-container>
-          <el-aside :width="asideWidth">
-              <m-menu :onasideWidth="setAsideWidth" />
-          </el-aside>
-          <el-container>
-              <el-header>
-                  <m-header />
-                  <div class="head_dropdowns">
-                      <m-dropdown :user="UserInfo" :dropLists="dropList" />
-                  </div>
-              </el-header>
-              <el-container>
-                  <el-main>
-                      <router-view></router-view>
-                  </el-main>
-                  <el-footer>
-                      footer
-                  </el-footer>
-              </el-container>
-          </el-container>
+        <el-header>
+          <m-header />
+          <div class="head_dropdowns">
+            <m-dropdown :UserInfo="UserInfo" :dropLists="dropList" />
+          </div>
+        </el-header>
+        <el-container>
+          <el-main>
+            <router-view></router-view>
+          </el-main>
+          <el-footer>
+            footer
+          </el-footer>
+        </el-container>
       </el-container>
+    </el-container>
   </div>
 </template>
 
@@ -30,26 +30,26 @@ import MHeader from '@/components/Header.vue'
 import MDropdown from '@/components/Dropdown.vue'
 export default {
   components: {
-      MMenu,
-      MHeader,
-      MDropdown
+    MMenu,
+    MHeader,
+    MDropdown
   },
   data() {
-      return {
-          asideWidth: '200',
-          dropList: [
-              { id: 1, title: '我的资料', link: '/information' },
-              { id: 2, title: '我的订单', link: '/order' },
-              { id: 3, title: '我的收藏', link: '/collection' },
-              { id: 4, title: '退出登录', link: '/login' }
-          ],
-          UserInfo:{ name: 'User Name '}
-      };
+    return {
+      asideWidth: '200',
+      dropList: [
+        { id: 1, title: '我的资料', link: '/information' },
+        { id: 2, title: '我的订单', link: '/order' },
+        { id: 3, title: '我的收藏', link: '/collection' },
+        { id: 4, title: '退出登录', link: '/login' }
+      ],
+      UserInfo: this.$store.state.user || {user: '未登录'}
+    };
   },
   methods: {
-      setAsideWidth(width) {
-          this.asideWidth = width;
-      }
+    setAsideWidth(width) {
+      this.asideWidth = width;
+    }
   }
 }
 </script>

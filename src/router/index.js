@@ -18,12 +18,11 @@ const routes = [
           { path: 'order', name: 'Order', component: () => import('@/views/Order.vue') },
           { path: 'collection', name: 'Collection', component: () => import('@/views/Collection.vue') },
           { path: 'aboutOne', name: 'AboutOne', component: () => import('@/views/About/AboutOne.vue') },
-          { path: 'aboutTwo', name: 'AboutOne', component: () => import('@/views/About/AboutTwo.vue') },
-          { path: 'aboutThree', name: 'AboutOne', component: () => import('@/views/About/AboutThree.vue') },
+          { path: 'aboutTwo', name: 'AboutTwo', component: () => import('@/views/About/AboutTwo.vue') },
+          { path: 'aboutThree', name: 'AboutThree', component: () => import('@/views/About/AboutThree.vue') },
           { path: '', redirect: 'about' }
         ]
       },
-
       { path: '', redirect: '/home' },
     ]
   },

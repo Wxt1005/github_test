@@ -2,7 +2,7 @@
     <div class="Dropdown">
         <el-dropdown trigger="click" @command="handleLink">
             <span class="el-dropdown-link">
-                {{ user.name }}<i class="el-icon-arrow-down el-icon--right"></i>
+                {{ this.UserInfo.user }}<i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item v-for="(item, index) in dropLists" :key="item.id" :command="item.link">{{
@@ -19,7 +19,7 @@ export default {
             type: Array,
             default: () => []
         },
-        user: Object
+        UserInfo: Object
     },
     data() {
         return {
@@ -29,14 +29,24 @@ export default {
     methods: {
         handleLink(link) {
             if (link === '/login') {
-                sessionStorage.removeItem('token');
-                this.$router.push(link);
+                this.$store.commit('clearUserInfo');
+                if (this.$store.state.token === null) {
+                    this.$router.push(link);
+                }
             } else {
-                this.$router.push('/home' + link);
+                if (this.$store.state.token === null) {
+                    this.$router.push('/login');
+                } else {
+                    if (this.$route.path === '/home' + link) {
+                        return;
+                    } else {
+                        this.$router.push('/home' + link);
+                    }
+                }
+
             }
-            // console.log('/home'+link)
         }
-    }
+    },
 }
 </script>
 
